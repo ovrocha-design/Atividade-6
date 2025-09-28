@@ -1,0 +1,19 @@
+import java.util.Scanner;
+public class Exercicio3 {
+public static void main(String[] args) {
+    Scanner entrada = new Scanner(System.in);
+    int maximo;
+    int numero1 = 1;
+    System.out.print("Digite um número inteiro : ");
+    maximo = entrada.nextInt();
+    entrada.close();
+    System.out.println("\nSequência (enquanto <= " + maximo + "):");
+    while (numero1 <= maximo) {
+        System.out.print(numero1);
+        if (numero1 * 2 <= maximo) {
+            System.out.print(", ");
+        }
+        numero1 = numero1 * 2;
+    }
+}
+}
