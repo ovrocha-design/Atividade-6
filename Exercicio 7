@@ -1,0 +1,30 @@
+import java.util.Scanner;
+public class Exercicio7 {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        int pessoas = 10;
+        int i = 1;
+        int semob = 0;
+        System.out.println("Faixa sem Obesidade: IMC entre 18.5 e 24.9");
+        while (i <= pessoas) {
+            System.out.println("Pessoa " + i + " de " + pessoas );
+            System.out.print("Digite a altura (em metros, ): ");
+            double altura = entrada.nextDouble();
+            System.out.print("Digite o peso (em quilogramas, ): ");
+            double peso = entrada.nextDouble();
+            double imc = peso / Math.pow(altura, 2);
+            boolean estaNaFaixa = imc >= 18.5 && imc <= 24.9;
+            System.out.printf("IMC calculado: %.2f \n", imc);
+            if (estaNaFaixa) {
+                System.out.println("Status:  Sem obesidade .");
+                semob++;
+            } else {
+                System.out.println("Status: Fora da faixa de sem obesidade.");
+            }
+            i++;
+        }
+        entrada.close();
+        System.out.println("Total de pessoas analisadas: " + pessoas);
+        System.out.println("Total de pessoas com IMC entre 18.5 e 24.9: " + semob);
+    }
+}
