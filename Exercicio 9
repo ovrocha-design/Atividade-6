@@ -1,0 +1,77 @@
+import java.util.Scanner;
+public class Exercicio9 {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+        double totGCom = 0.0;
+        char continuar = 'S';
+        Cardapio();
+        while (continuar == 'S' || continuar == 's') {
+            System.out.print("\nDigite o código do produto desejado: ");
+            int codigo = entrada.nextInt();
+            int quant = 0;
+            do {
+                System.out.print("Digite a quantidade: ");
+                if (entrada.hasNextInt()) {
+                    quant = entrada.nextInt();
+                } else {
+                    System.out.println("Quantidade inválida. Tente novamente.");
+                    entrada.next();
+                }
+            } while (quant <= 0);
+            double precoUnitario = 0.0;
+            String nomeProduto = "";
+            switch (codigo) {
+                case 100:
+                    nomeProduto = "Cachorro Quente";
+                    precoUnitario = 1.20;
+                    break;
+                case 101:
+                    nomeProduto = "Bauru Simples";
+                    precoUnitario = 1.30;
+                    break;
+                case 102:
+                    nomeProduto = "Bauru com Ovo";
+                    precoUnitario = 1.50;
+                    break;
+                case 103:
+                    nomeProduto = "Hambúrguer";
+                    precoUnitario = 1.20;
+                    break;
+                case 104:
+                    nomeProduto = "Cheeseburguer";
+                    precoUnitario = 1.30;
+                    break;
+                case 105:
+                    nomeProduto = "Refrigerante";
+                    precoUnitario = 1.00;
+                    break;
+                default:
+                    System.out.println("Código de produto inválido. Por favor, tente novamente.");
+                    continue;
+            }
+            double totProd = precoUnitario * quant;
+            totGCom += totProd;
+            System.out.printf("Item: %s | Total: R$ %.2f\n", nomeProduto, totProd);
+            System.out.print("\nDeseja adicionar outro item? (S/N): ");
+            continuar = entrada.next().toUpperCase().charAt(0);
+            while (continuar != 'S' && continuar != 'N') {
+                System.out.print("Resposta inválida. Digite S para Sim ou N para Não: ");
+                continuar = entrada.next().toUpperCase().charAt(0);
+            }
+        }
+        entrada.close();
+        System.out.println("Cálculo Final.");
+        System.out.printf("O valor total da sua compra é: R$ %.2f\n", totGCom);
+    }
+    private static void Cardapio() {
+        System.out.println("\n             CARDÁPIO ");
+        System.out.println("CÓDIGO  PRODUTO             PREÇO");
+        System.out.printf(" 100    Cachorro Quente      R$ %.2f\n", 1.20);
+        System.out.printf(" 101    Bauru Simples        R$ %.2f\n", 1.30);
+        System.out.printf(" 102    Bauru com Ovo        R$ %.2f\n", 1.50);
+        System.out.printf(" 103    Hambúrguer           R$ %.2f\n", 1.20);
+        System.out.printf(" 104    Cheeseburguer        R$ %.2f\n", 1.30);
+        System.out.printf(" 105    Refrigerante         R$ %.2f\n", 1.00);
+
+    }
+}
